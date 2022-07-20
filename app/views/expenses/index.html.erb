@@ -1,0 +1,83 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Expenses</h1>
+
+<% if current_employee.admin == false %>
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Invoice number</th>
+      <th>Category</th>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Statusemp</th>
+      <th>Date</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @expenses.each do |expense| %>
+      
+      <% if expense.employee == current_employee  %>
+      <tr>
+        <td><%= expense.invoice_number %></td>
+        <td><%= expense.category %></td>
+        <td><%= expense.description %></td>
+        <td><%= expense.amount %></td>
+        <td><%= expense.statusEmp %></td>
+        <td><%= expense.date %></td>
+        <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
+        <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'New Expense', new_expense_path %>
+<% end %>
+
+
+
+
+
+<% if current_employee.admin == true %>
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Invoice number</th>
+      <th>Category</th>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Statusemp</th>
+      <th>Date</th>
+      <th>Employee Id</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @expenses.each do |expense| %>
+      <%# <% if expense.statusEmp == "Waiting" %> 
+      <tr>
+        <td><%= expense.invoice_number %></td>
+        <td><%= expense.category %></td>
+        <td><%= expense.description %></td>
+        <td><%= expense.amount %></td>
+        <td><%= expense.statusEmp %></td>
+        <td><%= expense.date %></td>
+        <td><%= expense.employee_id %></td>
+
+        <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
+        
+       
+      </tr>
+      <%# <% end %> 
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'New Expense', new_expense_path %>
+<% end %>
+<br>
+
+

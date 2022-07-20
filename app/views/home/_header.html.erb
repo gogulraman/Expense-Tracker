@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item">
+        <%= link_to 'Home', root_path, class:"navbar-brand"%>
+      </li>
+
+
+
+
+      <% if employee_signed_in? %>
+
+      <% if current_employee.admin == true %> 
+        <li class="nav-item">
+            <%= link_to 'Employees', employees_index_path, class:"navbar-brand"%>
+        </li>
+
+        <% end %>
+        <li class="nav-item">
+            <%= link_to 'Expense', expenses_path, class:"navbar-brand"%>
+        </li>
+
+       
+         <li class="nav-item">
+        <%= link_to 'Edit Profile', edit_employee_registration_path, class:"navbar-brand"%>
+        </li>
+
+        <li class="nav-item">
+        <%= link_to 'Sign Out', destroy_employee_session_path, method: :delete, class:"navbar-brand"%>
+        </li>
+        
+
+
+      <% else %>
+        <li class="nav-item">
+            <%= link_to 'Sign In', new_employee_session_path, class:"navbar-brand"%>
+        </li>
+      
+
+      <li class="nav-item">
+        <%= link_to 'Sign Up', new_employee_registration_path, class:"navbar-brand"%>
+      </li>
+      <% end %>
+    </form>
+  </div>
+</nav>

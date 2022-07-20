@@ -1,0 +1,36 @@
+<h1>Expenses</h1>
+
+<% if current_employee.admin == true %>
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Invoice number</th>
+      <th>Category</th>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Statusemp</th>
+      <th>Date</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Expense.all.each do |expense| %>
+      
+      <% if expense.employee_id == @employee.id  %>
+      <tr>
+        <td><%= expense.invoice_number %></td>
+        <td><%= expense.category %></td>
+        <td><%= expense.description %></td>
+        <td><%= expense.amount %></td>
+        <td><%= expense.statusEmp %></td>
+        <td><%= expense.date %></td>
+        <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<% end %>
+

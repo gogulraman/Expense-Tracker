@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Employees</h1>
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Status</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employees.each do |employee| %>
+
+      <tr>
+        <td><%= employee.email %></td>
+        <td><%= employee.status %></td>
+        <td><%= link_to 'Expense', employee %></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+

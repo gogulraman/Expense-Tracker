@@ -1,0 +1,13 @@
+<%  if current_employee.admin == false %>
+    <h1>New Expense</h1>
+    <%= render 'form', expense: @expense %>
+
+    <%= link_to 'Back', expenses_path %>
+
+<% else %>
+    <h1>New Expense</h1>
+    <%= render 'adminform', expense: @expense %>
+
+    <%= link_to 'Back', expenses_path %>
+
+<% end %>
